@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const getConnection = require("./db/mongoose");
+const { getConnection } = require("./config/db");
 const app = require("./app");
 
 app.listen(3000, async () => {
