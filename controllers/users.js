@@ -38,7 +38,7 @@ const updateUser = async (req, res) => {
   if (errors.error && errors.error.details.length > 0) {
     return res.status(400).json({ errors: errors.error.details });
   }
-  const user = await Users.findByIdAndUpdate(req.params.userId);
+  const user = await Users.findByIdAndUpdate(req.params.userId, req.body);
   if (!user) {
     return res.status(400).json({ message: "Not found" });
   }
@@ -46,7 +46,7 @@ const updateUser = async (req, res) => {
 };
 
 const pathUser = async (req, res) => {
-  const user = await Users.findByIdAndUpdate(req.params.userId);
+  const user = await Users.findByIdAndUpdate(req.params.userId, req.body);
   if (!user) {
     return res.status(400).json({ message: "Not found" });
   }

@@ -36,7 +36,7 @@ const updateBook = async (req, res) => {
   if (errors.error && errors.error.details.length > 0) {
     return res.status(400).json({ message: errors.error.details });
   }
-  const book = await Books.findByIdAndUpdate(req.params.bookId);
+  const book = await Books.findByIdAndUpdate(req.params.bookId, req.body);
   if (!book) {
     return res.status(400).json({ message: "Not found" });
   }
@@ -44,7 +44,7 @@ const updateBook = async (req, res) => {
 };
 
 const pathBook = async (req, res) => {
-  const book = await Books.findByIdAndUpdate(req.params.bookId);
+  const book = await Books.findByIdAndUpdate(req.params.bookId, req.body);
   if (!book) {
     return res.status(400).json({ message: "Not found" });
   }
