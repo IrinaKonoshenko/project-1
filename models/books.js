@@ -7,7 +7,7 @@ const booksSchema = new Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "Author",
     required: [true, "Set author for user"],
   },
   description: {
@@ -20,6 +20,34 @@ const booksSchema = new Schema({
   rating: {
     type: Number,
   },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comments",
+      required: [true, "write a comment"],
+    },
+  ],
+  category: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: [true, "book categories"],
+    },
+  ],
+  genre: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Genre",
+      required: [true, "book genres"],
+    },
+  ],
+  tag: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Tag",
+      required: [true, "book tags"],
+    },
+  ],
 });
 
 const Books = model("Books", booksSchema);
